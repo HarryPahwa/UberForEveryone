@@ -39,6 +39,28 @@ def returnPriceEstimate():
 	text_file.close()
 	print('~~~~~~~~~~~~~')
 
+def returnTimeEstimate():
+	import requests
+
+	url = 'https://api.uber.com/v1/estimates/time'
+
+	parameters = {
+    'server_token': '60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb',
+    'start_latitude': 37.775818,
+    'start_longitude': -122.418028,
+	
+	}
+
+	response = requests.get(url, params=parameters)
+
+	data = response.json()
+	print(data)
+	text_file = open("Output.txt", "w")
+	for item in products:
+  		text_file.write("%s\n" % item)
+	text_file.close()
+	print('~~~~~~~~~~~~~')
+
 
 
 
