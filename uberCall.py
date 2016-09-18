@@ -1,3 +1,4 @@
+import requests
 from uber_rides.session import Session
 session = Session(server_token='60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb')
 from uber_rides.client import UberRidesClient
@@ -25,8 +26,6 @@ def returnPriceEstimate():
     'server_token': '60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb',
     'start_latitude': 37.775818,
     'start_longitude': -122.418028,
-	'end_latitude': 37.175818,
-    'end_longitude': -123.418028,
 	}
 
 	response = requests.get(url, params=parameters)
@@ -40,7 +39,7 @@ def returnPriceEstimate():
 	print('~~~~~~~~~~~~~')
 
 def returnTimeEstimate():
-	import requests
+	
 
 	url = 'https://api.uber.com/v1/estimates/time'
 
@@ -60,6 +59,42 @@ def returnTimeEstimate():
   		text_file.write("%s\n" % item)
 	text_file.close()
 	print('~~~~~~~~~~~~~')
+
+
+def callAnUber():	
+	
+	# url = 'https://api.uber.com/v1/me'
+	# response = requests.get(
+	#     url,
+	#     headers={
+	#         'Authorization': 'Bearer %s' % access_token
+	#     }
+	# )
+	# data = response.json()
+	# print(data)
+	print('~~~~~~~~~~~~~~~~~~~~~~')	
+
+
+	url='https://sandbox-api.uber.com/v1/sandbox/requests'
+
+
+
+	parameters = {
+    #'server_token': '60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb',
+    'product_id': '57c0ff4e-1493-4ef9-a4df-6b961525cf92',
+    'start_latitude': 37.775818,
+    'start_longitude': -122.418028,
+    'end_latitude': 37.175818,
+    'end_longitude': -123.418028,
+	
+	}
+
+	response = requests.get(url, params=parameters)
+	print(response)
+	data = response.json()
+	print(data)
+	print('!!!!!!!!!!!!!!!!!!!!1')
+
 
 
 
@@ -90,6 +125,7 @@ def getAuthenticationURL():
 
 def beginTexting(ac, pn): 
 	print("this is the phone number " + pn) 
-	print("this is the access ccode " + ac)
+	print("this is the access code " + ac)
+
 
 	

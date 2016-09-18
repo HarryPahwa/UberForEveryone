@@ -1,2 +1,2 @@
 import uberCall
-uberCall.returnPriceEstimate();
+uberCall.callAnUber();
