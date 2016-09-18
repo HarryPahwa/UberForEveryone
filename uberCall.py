@@ -75,25 +75,41 @@ def callAnUber():
 	print('~~~~~~~~~~~~~~~~~~~~~~')	
 
 
-	url='https://sandbox-api.uber.com/v1/sandbox/requests'
+	# url='https://sandbox-api.uber.com/v1/requests'
 
 
 
-	parameters = {
-    #'server_token': '60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb',
-    'product_id': '57c0ff4e-1493-4ef9-a4df-6b961525cf92',
-    'start_latitude': 37.775818,
-    'start_longitude': -122.418028,
-    'end_latitude': 37.175818,
-    'end_longitude': -123.418028,
-	
-	}
+	# parameters = {
+ 	#    "server_token": "60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb",
+	# "product_id": "a1111c8c-c720-46c3-8534-2fcdd730040d",
+	# "start_latitude": 37.761492,
+	# "start_longitude": -122.423941,
+	# "end_latitude": 37.775393,
+	# "end_longitude": -122.417546
 
-	response = requests.get(url, params=parameters)
-	print(response)
-	data = response.json()
-	print(data)
-	print('!!!!!!!!!!!!!!!!!!!!1')
+	# }
+
+	# response = requests.get(url, params=parameters)
+	# print(response)
+	# data = response.json()
+	# print(data)
+	# print('!!!!!!!!!!!!!!!!!!!!1')
+	from uber_rides.session import Session
+	# set your app credentials here
+	session = Session(server_token='60KIlvmpVK8JWNiNvau69NTqziJsT-0KM9e0Hlfb')
+
+	client = UberRidesClient(session, sandbox_mode=True)
+	response = client.request_ride(
+	    product_id='a1111c8c-c720-46c3-8534-2fcdd730040d',
+	    start_latitude=37.77,
+	    start_longitude=-122.41,
+	    end_latitude=37.79,
+	    end_longitude=-122.35
+	)
+	ride_details = response.json
+	ride_id = ride_details.get('request_id')
+	response = client.update_sandbox_ride(ride_id, 'accepted')
+	print(ride_id)
 
 
 

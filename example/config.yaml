@@ -1,0 +1,7 @@
+client_id: Xy07019vgK4SdQGGxPYFOjUVBRbskX0Z
+client_secret: cgN1x77XOhdLP7LADi1jO0CARk5ce9v11T8ALtZ9
+redirect_url: http://localhost:5000/callback
+scopes:
+    - profile
+    - history
+    - request
