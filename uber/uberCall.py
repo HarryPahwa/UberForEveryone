@@ -4,12 +4,10 @@ from uber_rides.client import UberRidesClient
 client = UberRidesClient(session)
 response = client.get_products(37.77, -122.41)
 products = response.json.get('products')
-print("this ran")
 
-def returnProducts(): 
-	print('~~~~~~~~~~~~~')
-	print(products)
-	print('~~~~~~~~~~~~~')
+print('~~~~~~~~~~~~~')
+# print(products)
+print('~~~~~~~~~~~~~')
 
 
 # client = UberRidesClient(session, sandbox_mode=True)
@@ -25,19 +23,11 @@ def returnProducts():
 # response = client.update_sandbox_ride(ride_id, 'accepted')
 # print(ride_id)
 
-def getAuthenticationURL(): 
-	from uber_rides.auth import AuthorizationCodeGrant
-	auth_flow = AuthorizationCodeGrant(
-	    'Xy07019vgK4SdQGGxPYFOjUVBRbskX0Z',
-	    ['profile'],
-	    'cgN1x77XOhdLP7LADi1jO0CARk5ce9v11T8ALtZ9',
-	    'http://localhost:5000/callback',
-	)
-	auth_url = auth_flow.get_authorization_url()
-	return auth_url
-
-def beginTexting(ac, pn): 
-	print("this is the phone number " + pn) 
-	print("this is the access ccode " + ac)
-
-	
+from uber_rides.auth import AuthorizationCodeGrant
+auth_flow = AuthorizationCodeGrant(
+    Xy07019vgK4SdQGGxPYFOjUVBRbskX0Z,
+    YOUR_PERMISSION_SCOPES,
+    cgN1x77XOhdLP7LADi1jO0CARk5ce9v11T8ALtZ9,
+    YOUR_REDIRECT_URL,
+)
+auth_url = auth_flow.get_authorization_url()

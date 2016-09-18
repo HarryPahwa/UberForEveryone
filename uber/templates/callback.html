@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>callback</title>
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		console.log("hi"); 
+		console.log(window.location.href); 
+		var url = window.location.href
+		var code = url.substring(url.indexOf("code=")+5,url.indexOf("#"))
+
+		$.post('/code_handback/',
+				{code: code, number: localStorage.getItem('number')},
+				function(json) {
+					console.log(json)
+				})
+	</script>
+
+</head>
+<body>
+	Hello world 
+</body>
+</html>

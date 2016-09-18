@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>start</title>
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		console.log(window.location.href); 
+
+		function goToAuth() {
+			console.log($('#phoneNumber').val())
+			localStorage.setItem("number", $("#phoneNumber").val());
+			$.post('/getAuth/',{},function(json){
+				console.log(json); 
+				window.open(json); 
+			})
+		}
+	</script>
+</head>
+<body>
+	Hello start.html
+	<input type="text" id="phoneNumber" placeholder="What number would you like to SMS Uber with?">
+	<a href="javascript:goToAuth()">login.</a>
+	<a href='/callback/'>callback</a>
+</body>
+</html>
